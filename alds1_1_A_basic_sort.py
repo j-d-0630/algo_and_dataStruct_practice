@@ -88,4 +88,4 @@ if __name__ == "__main__":
 
   print(output_sel)
   print(output_bub)
-  print(output_ind)
+  print(output_ins)
