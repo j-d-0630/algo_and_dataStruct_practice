@@ -27,18 +27,29 @@ def dijkstra(start:int,M:list):
   N = len(M)
   p = [None]*N #親のNode_IDリスト
   d = [INF]*N #distanceリスト
+  color = [0]*N # 0:undiscoverd ,1:dicovered
 
   d[start] = 0
 
   while True:
-    #接続先のdistanceを決めていく
-    for i in range(len(M)):
-      for j in range(len(M[i])):
-        #スタートから接続先までの距離が暫定値d[j]よりも短い場合は値を更新する
-        if d[j] > d[i] + M[i][j]:
-          d[j] = d[i] + M[i][j]
-          p[j] = i
-    return p,d
+    mindis = INF
+    for i in range(N):
+      #未探索かつ最短経路のNodeから探索
+      if color[i] != 1 and d[i] < mindis:
+         mindis = d[i]
+         u = i
+    #全てのNodeが探索済ならばwhileを抜ける
+    if mindis == INF:
+      break
+    
+    color[u] = 1
+        
+    for v in range(N):
+      if M[u][v] != INF and d[v] > d[u]+ M[u][v]:
+        d[v] = d[u] + M[u][v]
+        p[v] = u
+
+  return p,d
 
 p,d = dijkstra(0, M)
 print("親Node：",p)
