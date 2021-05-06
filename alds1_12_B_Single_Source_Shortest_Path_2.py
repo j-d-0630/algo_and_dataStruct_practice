@@ -24,7 +24,7 @@ for i in range(N):
     adjNode = adjList[i][j*2+2]
     M[i][adjNode] = adjList[i][j*2+3]
 
-def dijkstra(start:int,adjList:list):
+def dikstra(start:int,adjList:list):
   N = len(M)
   p = [None]*N #親のNode_IDリスト
   d = [INF]*N #disatanceリスト
@@ -52,7 +52,7 @@ def dijkstra(start:int,adjList:list):
   return p,d
 
 
-p,d = dijkstra(0,adjList)
+p,d = dikstra(0,adjList)
 
 for i in range(N):
   print(str(i)+"の最短経路長は"+str(d[i]))
