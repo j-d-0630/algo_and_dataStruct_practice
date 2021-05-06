@@ -23,7 +23,7 @@ for i in range(N):
     adjNode = adjList[i][j*2+2]
     M[i][adjNode] = adjList[i][j*2+3]
 
-def dijkstra(start:int,M:list):
+def dikstra(start:int,M:list):
   N = len(M)
   p = [None]*N #親のNode_IDリスト
   d = [INF]*N #distanceリスト
@@ -51,6 +51,6 @@ def dijkstra(start:int,M:list):
 
   return p,d
 
-p,d = dijkstra(0, M)
+p,d = dikstra(0, M)
 print("親Node：",p)
 print("最短経路：",d)
